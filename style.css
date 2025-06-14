@@ -1,0 +1,492 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'PingFang SC', 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+/* 导航栏动画 */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(26, 35, 126, 0.95);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.nav-scrolled {
+    background: rgba(16, 22, 82, 0.98);
+    padding: 0.8rem 5%;
+}
+
+.logo {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #2196F3;
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* 主内容区 */
+.hero {
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(26, 35, 126, 0.4), rgba(33, 150, 243, 0.4)),
+                url('https://free-img.mofashi.ltd/5/2024/10/20/67149111ac455.jpg') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 0 5%;
+    animation: heroEnter 1.5s ease-out;
+}
+
+@keyframes heroEnter {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    animation: textFloat 3s ease-in-out infinite;
+}
+
+@keyframes textFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    line-height: 1.8;
+    opacity: 0.95;
+}
+
+.button-group {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.cta-button, .download-button {
+    padding: 1.2rem 2.5rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button {
+    background: #2196F3;
+    color: white;
+}
+
+.download-button {
+    background: #2196F3;
+    color: white;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(33, 150, 243, 0.4);
+}
+
+.download-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+}
+
+/* 功能区块 */
+.features {
+    padding: 6rem 5%;
+    background: #f8f9fa;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 2.8rem;
+    color: #1a237e;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 60px;
+    height: 3px;
+    background: #2196F3;
+    transform: translateX(-50%);
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+.feature-card h3 {
+    color: #1a237e;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.feature-card p {
+    color: #666;
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+}
+/* 技术团队板块 */
+/* style.css 修改部分 */
+.team-section {
+    padding: 4rem 5%; /* 减少垂直间距 */
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.team-card {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+}
+
+/* 保持原有动画效果 */
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.15);
+}
+/* 模态框样式 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    animation: modalSlide 0.3s ease-out;
+}
+
+@keyframes modalSlide {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #666;
+}
+
+.qr-image {
+    max-width: 300px;
+    height: auto;
+    margin: 1rem 0;
+}
+
+/* 联系人悬停效果 */
+.nav-links a[href="#contact"] {
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-links a[href="#contact"]:hover {
+    color: #2196F3;
+}
+
+/* 统一按钮样式 */
+.cta-button {
+    background: #1976D2; /* 更深的蓝色 */
+    box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3); /* 新增阴影 */
+}
+
+.download-button {
+    background: #2196F3; /* 浅蓝色 */
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+}
+
+/* 增强按钮悬停效果 */
+.cta-button:hover, 
+.download-button:hover {
+    filter: brightness(110%);
+    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+}
+
+/* 优化联系人链接样式 */
+.contact-link {
+    background: rgba(255,255,255,0.1);
+    padding: 8px 20px;
+    border-radius: 25px;
+    transition: all 0.3s;
+}
+
+.contact-link:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* 增大二维码图片 */
+.qr-image {
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* 新增技术人员卡片动画 */
+.team-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.close-btn {
+    /* 原有样式保持不变 */
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: #f44336;
+    transform: scale(1.2);
+}
+
+/* 核心功能卡片动画 */
+.feature-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .feature-card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      rgba(33, 150, 243, 0.1) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(33, 150, 243, 0.1) 100%
+    );
+    transform: translate(-25%, -25%);
+    opacity: 0;
+    transition: all 0.6s;
+  }
+  
+  .feature-card:hover::before {
+    animation: flowLight 1.5s linear infinite;
+    opacity: 1;
+  }
+  
+  @keyframes flowLight {
+    0% {
+      transform: translate(-25%, -25%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-25%, -25%) rotate(360deg);
+    }
+  }
+  
+  /* 技术团队卡片动画 */
+  .team-card {
+    position: relative;
+    transform-style: preserve-3d;
+  }
+  
+  .team-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(33, 150, 243, 0.2);
+    opacity: 0;
+    transition: all 0.3s;
+  }
+  
+  .team-card:hover::after {
+    opacity: 1;
+  }
+  
+  .avatar {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .team-card:hover .avatar {
+    transform: scale(1.05) translateZ(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .bio {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s;
+    max-height: 0;
+  }
+  
+  .team-card:hover .bio {
+    transform: translateY(0);
+    opacity: 1;
+    max-height: 100px;
+  }
+  
+  /* 标题增强动画 */
+  .section-title {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+  }
+  
+  .section-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: #2196F3;
+    transition: all 0.4s;
+  }
+  
+  .section-title:hover::after {
+    width: 100%;
+    left: 0;
+  }
+
+  /* 头像容器 */
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    overflow: hidden;
+    position: relative;
+    border: 3px solid #2196F3;
+    background: #f8f9fa;
+}
+
+/* 头像图片 */
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 悬停动画 */
+.team-card:hover .avatar-img {
+    transform: scale(1.1);
+}
